@@ -7,10 +7,12 @@ class Phone(Device):
         print("This is a phone.")
 
 class SmartPhone(Phone, Device):
-    pass
+    def info(self):
+        Device.info(self)
+        Phone.info(self)
 
 sp = SmartPhone()
 sp.info()
 
 
-print(SmartPhone.__mro__)
+
