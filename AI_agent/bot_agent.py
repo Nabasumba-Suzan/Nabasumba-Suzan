@@ -5,7 +5,7 @@ import telegram.error
 
 # Use environment variables or a secure vault for real deployment
 BOT_TOKEN = "8105144524:AAG3Fguk29tG5VifIrXVSHrRI9yhFpN6ejo"
-CHAT_ID = "6166099190"  # Can be a user ID, group ID, or @channelusername
+CHAT_ID = "-1002752208616"  # Can be a user ID, group ID, or @channelusername
 
 async def post_to_telegram(text_content):
     """
@@ -40,7 +40,7 @@ async def post_to_telegram(text_content):
 
 if __name__ == "__main__":
     # Define your post content
-    my_post = "Hello from my Python bot! 🤖\n\nThis message was sent automatically at *8:53 PM*."
+    my_post = "Hello from my Python bot! 🤖\n\nThis message was sent from heaven."
     
     # Run the async function
     asyncio.run(post_to_telegram(my_post))
