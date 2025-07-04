@@ -2,10 +2,12 @@ import asyncio
 from telegram import Bot
 from telegram.constants import ParseMode
 import telegram.error
+import time
 
 # Use environment variables or a secure vault for real deployment
 BOT_TOKEN = "8105144524:AAG3Fguk29tG5VifIrXVSHrRI9yhFpN6ejo"
 CHAT_ID = "-1002752208616"  # Can be a user ID, group ID, or @channelusername
+INTERVAL_MINUTES = 30  # Message interval in minutes
 
 async def post_to_telegram(text_content):
     """
@@ -38,9 +40,19 @@ async def post_to_telegram(text_content):
     except Exception as e:
         print(f"❌ Unexpected error: {e}")
 
+async def scheduled_posting():
+    """Main scheduling loop that runs indefinitely"""
+    while True:
+        # Define your post content
+        my_post = "Hello from my Python bot! 🤖\n\nThis is your scheduled message every 30 minutes."
+        
+        # Post the message
+        await post_to_telegram(my_post)
+        
+        # Wait for the specified interval before posting again
+        print(f"⏳ Waiting for {INTERVAL_MINUTES} minutes before next post...")
+        await asyncio.sleep(INTERVAL_MINUTES * 60)
+
 if __name__ == "__main__":
-    # Define your post content
-    my_post = "Hello from my Python bot! 🤖\n\nThis message was sent from heaven."
-    
-    # Run the async function
-    asyncio.run(post_to_telegram(my_post))
+    # Run the scheduled posting
+    asyncio.run(scheduled_posting())
